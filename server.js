@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 
 app.get("/", async (req, res) => {
-  res.write("testing my api").res.end();
+  res.status(200).send("testing my own api");
 });
 
 app.listen(port, () => {
