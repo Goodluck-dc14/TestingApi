@@ -4,15 +4,19 @@ const port = process.env.PORT || 3001;
 const cors = require("cors");
 const path = require("./MealsApi/router");
 const mongoose = require("mongoose");
-const MONGODB_URL =
-  "mongodb+srv://t62xbdtv8YyUmtj3:t62xbdtv8YyUmtj3@cluster0.zqyac.mongodb.net/foodDB?retryWrites=true&w=majority";
 
-mongoose.connect(MONGODB_URL, {
-  useCreateIndex: true,
-  useFindAndModify: false,
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+const url = process.env.MONGODB_URI;
+console.log(url);
+
+mongoose.connect(
+  "mongodb+srv://t62xbdtv8YyUmtj3:t62xbdtv8YyUmtj3@cluster0.zqyac.mongodb.net/MealDB?retryWrites=true&w=majority",
+  {
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  }
+);
 
 mongoose.connection
   .on("open", () => {
